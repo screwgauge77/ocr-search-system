@@ -1,0 +1,26 @@
+Design and implement a document search system in the MERN stack where users upload PDFs/images, a Node.js (Express) service runs OCR using Tesseract.js to extract per-page text (with language selection and basic image preprocessing), and the results are indexed in MongoDB for fast, relevance-ranked search. Provide a React UI for upload, progress/status, and search with hit highlighting and page previews. The pipeline must handle multi-page files asynchronously so large uploads don’t block the UI, and it should surface OCR confidence and allow re-processing of low-quality pages.
+
+Key Features
+Upload & Validation – Accept PDFs/images with type/size checks, duplicate detection (hash), and safe temp storage.
+OCR Pipeline (Tesseract.js) – Page-by-page OCR with selectable languages; optional preprocessing (deskew, denoise, rotate, binarize).
+Asynchronous Processing – Job queue with states (queued/processing/done/failed); resumable retries and cancellation.
+Realtime Feedback – WebSocket/SSE updates for per-page progress, ETA, and errors; toast notifications on completion.
+Text & Metadata Model – Store document metadata (title/tags/uploader) plus page text, positions, and confidence scores.
+Indexing & Search – MongoDB text index or Atlas Search for full-text, phrase, prefix queries; filters (type/tag/date), sorting, and pagination.
+Result Presentation – React search UI with highlighted snippets, page thumbnails/previews, and jump-to-page navigation.
+Quality Controls – Flag low-confidence pages; re-OCR with different language/params; manual corrections saved back to the index.
+Internationalization – Multi-language OCR packs; per-document language selection and mixed-language handling.
+Performance & Caching – Batch writes, worker concurrency controls, cache OCR outputs, and throttle CPU usage to keep the server responsive.
+Security – JWT-protected APIs, input sanitization, optional antivirus hook, and role-based access to documents/indices.
+Observability – Structured logs, metrics (throughput, OCR time/page, query latency), failure dashboards, and audit trails.
+Testing & Seed Data – Fixtures with mixed-quality scans for OCR accuracy tests; integration tests for search relevance and pagination.
+
+ 
+5m spent
+
+
+2 Likes
+
+
+1 Dislike
+
